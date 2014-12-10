@@ -21,7 +21,7 @@ app.get('/user/:id', function(req, res) {
 
 });
 
-app.post('/callback', function(req, res) {
+app.get('/callback', function(req, res) {
 
 	var access_token = req.query.access_token;
 	var refresh_token = req.query.refresh_token;
@@ -33,7 +33,7 @@ app.post('/callback', function(req, res) {
         	res.redirect('/')
     	} else {
 			//Store tokens
-			res.header('Location', 'http://localhost:5000/callback?access_token=' + access_token);
+			res.header('Location', 'http://localhost:9000/callback?access_token=' + access_token);
     		res.send(302);
     	}
     });
@@ -49,7 +49,7 @@ app.post('/login/google', function(req, res) {
 		if (error) {
 			res.redirect('/');
 		} else {
-			res.header('Location', 'http://localhost:5000/callback?access_token=' + access_token);
+			res.header('Location', 'http://localhost:9000/callback?access_token=' + access_token);
     		res.send(302);
 		}
 	});
